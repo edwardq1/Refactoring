@@ -10,7 +10,7 @@ public class Attacker
 		SUM=0;
 		typeAttack="";
 	}
-		
+	//testing if git works
 		
 	//This method generates a random move depending on what the user inputs as the 
 	// percentages. 
