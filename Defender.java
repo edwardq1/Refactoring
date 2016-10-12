@@ -5,9 +5,6 @@ public class Defender
 	private int numberOfAttacksHit;
 	private int numberOfAttacksBlocked;
 	private int roundTracking;
-	private int trackEnemyHighAttack;
-	private int trackEnemyLowAttack;
-	private int trackEnemyMediumAttack;
 	private int percentageOfHighAttack;
 	private int percentageOfLowAttack;
 	private int percentageOfMediumAttack;
@@ -22,9 +19,6 @@ public class Defender
 		numberOfAttacksHit= 0;
 		numberOfAttacksBlocked= 0;
 		roundTracking= 0;
-		trackEnemyHighAttack=0;
-		trackEnemyMediumAttack=0;
-		trackEnemyLowAttack=0;
 		percentageOfHighAttack=0;
 		percentageOfLowAttack=0;
 		percentageOfMediumAttack=0;
@@ -41,8 +35,6 @@ public class Defender
 	//then it will start recognizing the attacks and be smart about the defense moves.
 	public void getDefense(int rounds, String attack)
 	{
-		if (roundTracking < 20)
-		{
 			int defense = generator.nextInt(4-1) + 1;
 			switch(defense){
 			case 1: defense = 1;
@@ -59,18 +51,6 @@ public class Defender
 					break;
 			}
 			determineHitOrBlock(attack);
-			trackEnemyAttacks(rounds,attack);
-		} else {
-			trackEnemyAttacks(rounds, attack);
-			determineHitOrBlock(attack);
-			if (attack == "High")
-				percentOfHighDefense++;
-			else if (attack == "Low")
-				percentOfLowDefense++;
-			else if (attack == "Medium")
-				percentOfMediumDefense++;
-		}
-		
 	}
 	
 	
@@ -117,25 +97,6 @@ public class Defender
 
 	}
 	
-	//This method is to track the attack. It will take the number of values from low, medium
-	// and high and do the math to get a percentage. Then it will do the range between them
-	// and determine the highest possibility for the defensive move. 
-	public void trackEnemyAttacks(int round, String attack)
-	{
-		
-		if (round % 20 == 20){
-			trackEnemyHighAttack = enemyAttackCalculation(trackEnemyHighAttack, 20);
-			trackEnemyLowAttack = enemyAttackCalculation(trackEnemyLowAttack, 20);
-			trackEnemyMediumAttack = enemyAttackCalculation(trackEnemyMediumAttack, 20);
-			int defense = generator.nextInt(99) + 1;
-			if (defense>0 && defense<trackEnemyHighAttack)
-				printDefense= "High";
-			else if (defense>trackEnemyHighAttack && defense<(trackEnemyHighAttack+trackEnemyLowAttack))
-				printDefense= "Low";
-			else if (defense>(trackEnemyHighAttack+trackEnemyLowAttack) && defense<(trackEnemyHighAttack+trackEnemyLowAttack+trackEnemyMediumAttack))
-				printDefense = "Medium";
-		}
-	}
 	
 	public void incrementAttack(String attack){
 		switch (attack){
