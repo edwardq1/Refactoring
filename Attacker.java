@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.Random;
 public class Attacker
 {
@@ -37,8 +36,6 @@ public class Attacker
 			typeAttack= "Medium";
 		}
 	}
-	
-
 
 	//This method is the check and see if the user entered invalid information
 	// and will set it to default percentages if the user did enter a value>100 or less than
