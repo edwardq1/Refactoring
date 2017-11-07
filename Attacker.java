@@ -13,7 +13,7 @@ public class Attacker
 		typeAttack="";
 		defaultHighAttack = 33;
 		defaultLowAttack = 33;
-		defaultMediumAttack = 34;
+		defaultMediumAttack = 33;
 	}
 		
 	//This method generates a random move depending on what the user inputs as the 
